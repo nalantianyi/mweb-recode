@@ -11,7 +11,7 @@ var config = {
     "appSecret": "bd0ff4b87c32c729036236761b3f8135",
     "token": "bdVci937jADFQGkxo2ratUyz6XK48C5M",
     "encodingAESKey": "MdrrEUETgRvRVMF9Caos64DEYE7LP2EqDieUxOSOYbJ",
-    "admins": 'oHv8is2fgmO4G0dUUTKVFjXICjqs'
+    "admins": 'o68zJwmrFOdz0u7qDYefSE20CALM'
 
 };
 app.use('/', Wechat(config, Wechat.text(text_handler).event(eventHandler)));
