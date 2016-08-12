@@ -5,15 +5,16 @@ var Wechat = require('wechat');
 var WechatAPI = require('wechat-api');
 var express = require('express');
 var app = express();
-var api = new WechatAPI('wx5786fae623fb9353', '94dba368c96a9ff97e16337b887d9547');
 var config = {
-    "appid": "wx2171bd1549ac505c",
-    "appSecret": "bd0ff4b87c32c729036236761b3f8135",
+    "appid": "wxb3cfefe4153c1522",
+    "appSecret": "e177126f4eba2e280ef556c0a014857e",
     "token": "bdVci937jADFQGkxo2ratUyz6XK48C5M",
     "encodingAESKey": "MdrrEUETgRvRVMF9Caos64DEYE7LP2EqDieUxOSOYbJ",
-    "admins": 'o68zJwmrFOdz0u7qDYefSE20CALM'
+    "admins": 'oHv8is2fgmO4G0dUUTKVFjXICjqs'
 
 };
+var api = new WechatAPI(config.appid, config.appSecret);
+
 app.use('/', Wechat(config, Wechat.text(text_handler).event(eventHandler)));
 var eventHandlers = {
     "ABOUT_ME": eventAboutMe,
