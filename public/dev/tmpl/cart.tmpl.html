@@ -1,0 +1,70 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1"><a href="#"><img src="img/icon-8.png"/></a></div>
+        <div>购物车</div>
+        <div class="head-icon-2" ng-if="cartList.length!=0">
+            <p ng-click="toggleState('edit')" ng-if="state=='read'">编辑</p>
+            <p ng-click="toggleState('read')" ng-if="state=='edit'">完成</p>
+        </div>
+    </div>
+    <div class="div-placeholder"></div>
+    <div class="div-10px"></div>
+    <!--购物车为空-->
+    <div class="cart-none" ng-if="cartList.length==0">
+        <h4>购物车还是空的</h4>
+        <p>快去挑选几件中意的宝贝吧!</p>
+        <input class="btn-black-null" type="button" value="去逛逛"/>
+    </div>
+
+    <!--购物车-->
+    <div ng-if="cartList.length!=0">
+        <div class="shopping-cart">
+            <ul>
+                <li class="clear" ng-repeat="cartItem in cartList">
+                    <div class="fl cart-left" ng-click="check(cartItem)">
+                        <img class="check" src="img/icon-4.png" ng-if="cartItem['front-hasChecked']"/>
+                        <img class="check" src="img/icon-5.png" ng-if="!cartItem['front-hasChecked']"/>
+                        <img class="pic-pro" ng-src="{{cartItem.goodsDetailBean.productVo.goodsInfoImgId}}"/>
+                        <div class="sold-out-mask" ng-if="cartItem.goodsDetailBean.productVo.showMobile!=1">
+                            <p>无货</p>
+                            <span>Sold Out</span>
+                        </div>
+                    </div>
+                    <div class="fr cart-right" ng-class="{disabled:cartItem.goodsDetailBean.productVo.showMobile!=1}">
+                        <h4 ng-bind="cartItem.goodsDetailBean.productVo.productName"></h4>
+                        <p class=""><span></span></p>
+                        <em ng-bind="cartItem.goodsDetailBean.productVo.goodsInfoPreferPrice|currency:'¥'"></em>
+                        <div class="change-num">
+                            <img src="img/icon-6.png" ng-click="goodNumSub(cartItem)"/>
+                            <span ng-bind="cartItem.goodsNum"></span>
+                            <img src="img/icon-7.png" ng-click="goodNumAdd(cartItem)"/>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--结算-->
+        <div class="cart-sum clear" ng-if="state=='read'">
+            <div class="fl cart-sum-left" ng-click="checkAll()">
+                <img class="check" src="img/icon-4.png" ng-if="isCheckAll"/>
+                <img src="img/icon-5.png" class="check" ng-if="!isCheckAll"/>
+                <span>全选</span>
+                <strong>总计:<em ng-bind="sum|currency:'¥'"></em></strong>
+            </div>
+            <div class="fr cart-sum-right-green" ng-click="goPay()">
+                去付款
+            </div>
+        </div>
+        <!--编辑状态-->
+        <div class="cart-sum clear" ng-if="state=='edit'">
+            <div class="fl cart-sum-left" ng-click="checkAllInEdit()">
+                <img class="check" src="img/icon-4.png" ng-if="isCheckAllEdit"/>
+                <img src="img/icon-5.png" class="check" ng-if="!isCheckAllEdit"/>
+                <span>全选</span>
+                <!--strong>总计:<em>￥89.00</em></strong-->
+            </div>
+            <div class="fr cart-sum-right"><input id="delete" type="button" ng-click="del()" value="移除"/></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1 head-icon-many">
+            <a ng-click="goBack()"><img src="img/icon-8.png"/></a>
+        </div>
+        <div>晒单评价</div>
+
+    </div>
+    <div class="div-placeholder"></div>
+
+
+    <!--我的分销产品列表-->
+    <div class="shopping-cart">
+        <ul>
+            <li class="clear" ng-repeat="good in goods">
+                <div class="fl cart-left cart-left-1">
+                    <img class="pic-pro pic-pro-1" ng-src="{{good.goodsImg}}"/>
+                </div>
+                <div class="fr cart-right cart-right-1">
+                    <h4 ng-bind="good.goodsName"></h4>
+                    <p class=""><span ng-repeat="spec in order.goods[0].specVo">{{spec.specValueRemark}}{{spec.spec.specName}} </span>
+                        <em>{{good.goodsPrice|currency:'¥'}}&nbsp;&nbsp;<span
+                                class="text-gray">x{{good.goodsNum}}</span></em>
+                    <div class="change-num">
+                        <button class=" btn-green-null" ng-click="evaluate(good)" ng-if="good.evaluateFlag=='0'">晒单评价
+                        </button>
+                        <button class=" btn-disabled-null" ng-if="good.evaluateFlag!='0'">已评价
+                        </button>
+
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1"><a ng-click="goBack()"><img src="img/icon-8.png"/></a></div>
+        <div>物流信息</div>
+    </div>
+    <div class="div-placeholder"></div>
+
+    <!--快递-->
+    <div class="logistic-company">
+        <p ng-bind="expressInfo.expressName"></p>
+        <p>运单编号：{{expressInfo.expressNo}}</p>
+    </div>
+    <div class="box-12px"></div>
+    <!--  -->
+    <div class="logistic-state">
+        <ul>
+            <li ng-class="{active:$index===0}" ng-repeat="express in expressInfo.express.data">
+                <div class="logistic-box">
+                    <div ng-bind="express.context">
+                    </div>
+                    <p ng-bind="express.time"></p>
+                </div>
+                <em class="circle-green"><span></span></em>
+            </li>
+        </ul>
+    </div>
+</div>
+

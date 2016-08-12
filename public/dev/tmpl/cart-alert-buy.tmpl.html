@@ -1,0 +1,17 @@
+<div class="modePop modePop-1">
+    <div class="alert-top">
+        <img class="pic-product" ng-src="{{data.goodsImg}}" />
+        <span><strong class="text-red" ng-bind="goodsInfoPreferPrice|currency:'¥'"></strong><em class="text-gray" ng-bind="goodsInfoCostPrice|currency:'¥'"></em></span>
+        <img class="pic-x" src="img/icon-25.png" ng-click="close()" />
+    </div>
+
+    <div class="alert-num">
+        <p>购买数量</p>
+        <div class="change-num">
+            <img src="img/icon-6.png" ng-click="cartSub()"/>
+            <span ng-bind="cartNum"></span>
+            <img src="img/icon-7.png" ng-click="cartPlus()"/>
+        </div>
+    </div>
+    <div class="save" ng-click="buySubmit()">确定</div>
+</div>

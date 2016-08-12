@@ -1,0 +1,72 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1"><a href="#/app"><img src="img/icon-8.png"/></a></div>
+        <div>我的订单</div>
+    </div>
+    <div class="div-placeholder"></div>
+
+    <!--没有产品-->
+    <div class="search-no">
+        <div class="product-nav web_flex">
+            <div class="web_flex_1" ng-class="{active:state=='待付款'}">
+                <a ng-click="select('待付款')">待付款</a>
+            </div>
+            <div class="web_flex_1" ng-class="{active:state=='已付款'}">
+                <a ng-click="select('已付款')">已付款</a>
+            </div>
+            <div class="web_flex_1" ng-class="{active:state=='交易成功'}">
+                <a ng-click="select('交易成功')">交易成功</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-none wifi-none" ng-if="orderList.length===0">
+        <img src="img/no-order.png"/>
+        <h4>暂无相关订单</h4>
+        <p>快去逛吧!</p>
+        <input class="btn-black-null" type="button" value="去逛逛"/>
+    </div>
+    <!--列表-->
+    <div class="shopping-cart shopping-cart-1" ng-if="orderList.length>0">
+        <ul>
+            <li class="clear" ng-repeat="order in orderList">
+                <div class="state clear">
+                    <p class="fl font14 text-gray" ng-bind="order.addTime|date:'yyyy-MM-dd'"></p>
+                    <p class="fr text-green" ng-bind="order.orderStatusName"></p>
+                </div>
+                <div class="M-pro-list clear">
+                    <div class="fl cart-left cart-left-1">
+                        <img class="pic-pro pic-pro-1" ng-src="{{order.goods[0].goodsImg}}"/>
+                    </div>
+                    <div class="fr cart-right cart-right-1">
+                        <h4 ng-bind="order.goods[0].goodsName"></h4>
+                        <p class=""><span ng-repeat="spec in order.goods[0].specVo">{{spec.specValueRemark}}{{spec.spec.specName}} </span>
+                        </p>
+                        <em ng-bind="order.goods[0].goodsPrice*order.goods[0].goodsNum|currency:'￥'"></em>
+                        <div class="change-num">
+                            <span>x{{order.goods[0].goodsNum}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="state clear">
+                    <p class="fl">共{{order.goods.length}}件商品</p>
+                    <p class="fr">实付款：<span class="text-red" ng-bind="order.moneyPaid|currency:'￥'"></span></p>
+                </div>
+                <div class="confirm-goods-btn" ng-if="order.orderStatusName=='待收货'">
+                    <input class="btn-black-null" type="button" ng-click="gotoLogistics(order.orderId)" value="物流信息"/>
+                    <input class="btn-green-null" type="button" ng-click="confirm(order)" value="确认收货"/>
+                </div>
+                <!--<div class="confirm-goods-btn" ng-if="order.orderStatusName=='待发货'">-->
+                <!--</div>-->
+                <div class="confirm-goods-btn" ng-if="order.orderStatusName=='已完成'">
+                    <input class="btn-black-null" type="button" ng-click="" value="申请售后"/>
+                    <input class="btn-black-null" type="button" ng-click="delOrder(order.orderId)" value="删除订单"/>
+                    <input class="btn-green-null" type="button" ng-click="evaluate(order)" value="晒单评价"/>
+                </div>
+                <div class="box-12px"></div>
+            </li>
+        </ul>
+    </div>
+
+</div>

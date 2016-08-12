@@ -1,0 +1,101 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1"><a ng-click="goBack()"><img src="img/icon-8.png"/></a></div>
+        <div>订单详情</div>
+    </div>
+    <div class="div-placeholder"></div>
+    <!--订单收获详情-->
+    <div class="wait-goods clear">
+        <p class="fl font14">订单编号：{{data.orderId}}</p>
+        <span class="fr">{{data.orderStatusName}}</span>
+    </div>
+    <div class="div-10px"></div>
+
+    <!--寄货地址-->
+    <div class="O-address">
+        <p class="address-1"><span>任超</span><span>1867392738</span><em>默认</em></p>
+        <p class="address-2">江苏省南京市玄武区德基广场二期</p>
+    </div>
+    <div class="div-10px"></div>
+    <div class="clear rebate-list">
+        <div class="fl">
+            <p class="text-green">物流信息：正在配送途中...</p>
+            <span class="font14 text-gray">2016-01-02  10:22:32</span>
+        </div>
+        <div class="fr">
+            <img src="img/icon-15.png"/>
+        </div>
+    </div>
+    <div class="div-10px"></div>
+    <!--产品列表-->
+    <div class="shopping-cart">
+        <ul>
+            <li class="clear" ng-repeat="good in data.goods">
+                <div class="fl cart-left cart-left-1">
+                    <img class="pic-pro pic-pro-1" ng-src="{{good.goodsImg}}"/>
+                </div>
+                <div class="fr cart-right cart-right-1">
+                    <h4 ng-bind=""></h4>
+                    <p class=""><span ng-repeat="spec in good.specVo">{{spec.specValueRemark}}{{spec.spec.specName}} </span>
+                        <em>{{good.goodsPrice|currency:'¥'}}</em>
+                    <div class="change-num">
+                        <span>x{{good.goodsNum}}</span>
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+        <div class="gathered">收起<img src="img/icon-16.png"/></div>
+        <div class="div-10px"></div>
+    </div>
+    <!--支付方式和配送方式-->
+    <div class="pay-way">
+        <div class="voucher clear">
+            <span class="fl">支付方式</span>
+            <strong class="fr">微信支付</strong>
+        </div>
+
+        <div class="delivery clear">
+            <h4 class="fl">配送方式</h4>
+            <div class="fr">
+                <p class="delivery-way">商家配送</p>
+                <p class="delivery-detail"><img src="img/icon-17.png" alt="" name=""/>由商家选择合作快递为您配送</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-10px"></div>
+    <!--商品价格-->
+    <div class="price">
+        <ul>
+            <li class="clear"><p class="fl">商品总价</p>
+                <p class="fr">￥227.00</p></li>
+            <li class="clear"><p class="fl">运费</p>
+                <p class="fr">￥0.00</p></li>
+            <li class="clear"><p class="fl">金币</p>
+                <p class="fr">-￥3.00</p></li>
+            <li class="clear"><p class="fl">抵用券</p>
+                <p class="fr">-￥3.00</p></li>
+            <li class="clear li-border-bot">
+                <p class="fl">总计</p>
+                <div class="fr">
+                    <p class="text-red">￥221.00</p>
+                    <p class="order-time text-gray font14">下单时间 2016-04-02 10:10:20</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="div-10px"></div>
+
+    <!--结算-->
+    <div class="cart-sum confirm-goods clear">
+        <input class="btn-black-null" type="button" value="申请售后"/>
+        <input class="btn-black-null" type="button" value="删除订单"/>
+        <input class="btn-green-null" type="button" value="确认收货"/>
+    </div>
+    <div style="height: 53px;"></div>
+</div>

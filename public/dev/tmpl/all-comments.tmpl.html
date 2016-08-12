@@ -1,0 +1,44 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1 head-icon-many">
+            <a ng-click="goBack()"><img src="img/icon-8.png" alt="" name="" /></a>
+        </div>
+        <div>全部评论</div>
+        <div  class="head-icon-2">
+        </div>
+    </div>
+    <div class="div-placeholder"></div>
+    <!--商品详情和评价-->
+    <div class="div-10px"></div>
+    <div id="product-all-comment" class="product-all-comment">
+        <ul ng-if="comments.length>0">
+            <li ng-repeat="comment in comments">
+                <div class="clear user-reviews">
+                    <div class="fl">
+                        <img class="photo-head" ng-src="{{comment.customerImg}}" alt="" name="">
+                        <span class="text-gray" ng-bind="comment.customerNickname"></span>
+                    </div>
+                    <div class="fr" ng-click="saveComment(comment.commentId)">
+                        <img class="icon-love" src="img/icon-22.png" ng-if="comment.opnions.length==0">
+                        <img class="icon-love" src="img/icon-23.png" ng-if="comment.opnions.length>0">
+                        <span class="text-green" ng-bind="comment.opnions.length"></span>
+                    </div>
+                </div>
+                <p class="text-details" ng-bind="comment.commentContent"></p>
+                <span class="text-gray font14" ng-bind="comment.publishTime|date:'yyyy-MM-dd hh:mm:ss'"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="div-10px"></div>
+    <!--结算-->
+    <div class="bottom-product-buy web_flex">
+        <div class="web_flex_1 active">
+            <a ng-click="addCart()">加入购物车</a>
+        </div>
+        <div class="web_flex_1">
+            <a ng-click="goBuy()">立即购买</a>
+        </div>
+    </div>
+    <div style="height: 53px;"></div>
+</div>

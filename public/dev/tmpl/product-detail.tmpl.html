@@ -1,0 +1,120 @@
+<div class="wrap">
+    <!--头部-->
+    <div ng-show="showType=='detail'">
+        <div class="header">
+            <div class="head-icon-1 head-icon-many">
+                <a><img src="img/icon-8.png"/></a>
+            </div>
+            <div class="head-icon-2">
+                <a href="#/cart"><img src="img/icon-3.png"/></a>
+            </div>
+        </div>
+        <div class="div-placeholder"></div>
+        <div class="header-black">
+            <p>动动手指，参与我要代言分享！2%利润和提成..</p>
+            <input class="btn-green" type="button" ng-click="share()" value="去分享">
+        </div>
+        <!--主图产品-->
+        <div class="main-product">
+            <div my-swiper="picDatas"></div>
+            <div class="product-description">
+                <h4 ng-bind="productName"></h4>
+                <p><span class="text-red" ng-bind="goodsInfoPreferPrice|currency:'¥'"></span>
+                    <del ng-bind="goodsInfoCostPrice|currency:'¥'"></del>
+                </p>
+                <div class="product-countdown">
+                    <img src="img/icon-21.png"/>
+                    <strong ng-if="!isMarketingStart">活动还没有开始</strong>
+                    <strong ng-if="isMarketingStart&&!isMarketingEnd">剩余<em>{{times.days}}</em>天<em>{{times.hours}}</em>:<em>{{times.minutes}}</em>:<em>{{times.seconds}}</em></strong>
+                    <strong ng-if="isMarketingEnd">活动已经结束</strong>
+                </div>
+            </div>
+            <div class="title-more-comment" ng-show="!isShowDetailAndComment"
+                 ng-click="isShowDetailAndComment=!isShowDetailAndComment">
+                <img src="img/icon-26.png"/> 下拉查看商品详情
+            </div>
+        </div>
+
+        <div ng-show="isShowDetailAndComment">
+            <!--商品详情和评价-->
+            <div class="product-nav web_flex">
+                <div class="nav_1 web_flex_1" ng-class="{active:!switchShow}" ng-click="switchShow=!switchShow">
+                    <a>商品详情</a>
+                </div>
+                <div class="nav_2 web_flex_1" ng-class="{active:!!switchShow}" ng-click="switchShow=!switchShow">
+                    <a>商品评价</a>
+                </div>
+            </div>
+            <div id="product-all-details" ng-show="!switchShow" class="product-all-details"
+                 ng-bind-html="productDetail|trusted">
+            </div>
+            <div id="product-all-comment" ng-show="switchShow" class="product-all-comment">
+                <h4>—— 评论 ——</h4>
+                <ul ng-if="comments.length>0">
+                    <li ng-repeat="comment in comments">
+                        <div class="clear user-reviews">
+                            <div class="fl">
+                                <img class="photo-head" ng-src="{{comment.customerImg}}" alt="" name="">
+                                <span class="text-gray" ng-bind="comment.customerNickname"></span>
+                            </div>
+                            <div class="fr" ng-click="saveComment(comment.commentId)">
+                                <img class="icon-love" src="img/icon-22.png" ng-if="comment.opnions.length==0">
+                                <img class="icon-love" src="img/icon-23.png" ng-if="comment.opnions.length>0">
+                                <span class="text-green" ng-bind="comment.opnions.length"></span>
+                            </div>
+                        </div>
+                        <p class="text-details" ng-bind="comment.commentContent"></p>
+                        <span class="text-gray font14" ng-bind="comment.publishTime|date:'yyyy-MM-dd hh:mm:ss'"></span>
+                    </li>
+                </ul>
+                <div ng-if="comments.length>0" class="text-green title-more-comment" ng-click="loadMoreComments()">
+                    查看更多评论>>
+                </div>
+                <div ng-if="comments.length==0" class="no-comment">抱歉，该商品暂无评论</div>
+            </div>
+        </div>
+        <!--结算-->
+
+    </div>
+    <div ng-show="showType=='moreComments'">
+        <div class="header">
+            <div class="head-icon-1 head-icon-many">
+                <a ng-click="goBack()"><img src="img/icon-8.png" alt="" name="" /></a>
+            </div>
+            <div>全部评论</div>
+            <div  class="head-icon-2">
+            </div>
+        </div>
+        <div class="div-placeholder"></div>
+        <!--商品详情和评价-->
+        <div class="div-10px"></div>
+        <div class="product-all-comment">
+            <ul ng-if="comments.length>0">
+                <li ng-repeat="comment in comments">
+                    <div class="clear user-reviews">
+                        <div class="fl">
+                            <img class="photo-head" ng-src="{{comment.customerImg}}" alt="" name="">
+                            <span class="text-gray" ng-bind="comment.customerNickname"></span>
+                        </div>
+                        <div class="fr" ng-click="saveComment(comment.commentId)">
+                            <img class="icon-love" src="img/icon-22.png" ng-if="comment.opnions.length==0">
+                            <img class="icon-love" src="img/icon-23.png" ng-if="comment.opnions.length>0">
+                            <span class="text-green" ng-bind="comment.opnions.length"></span>
+                        </div>
+                    </div>
+                    <p class="text-details" ng-bind="comment.commentContent"></p>
+                    <span class="text-gray font14" ng-bind="comment.publishTime|date:'yyyy-MM-dd hh:mm:ss'"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom-product-buy web_flex">
+        <div class="web_flex_1 active" ng-class="{disabled:!isMarketingStart||isMarketingEnd}">
+            <a ng-click="addCart()" ng-disabled="!isMarketingStart||isMarketingEnd" class="">加入购物车</a>
+        </div>
+        <div class="web_flex_1" ng-class="{disabled:!isMarketingStart||isMarketingEnd}">
+            <a ng-click="goBuy()" ng-disabled="!isMarketingStart||isMarketingEnd">立即购买</a>
+        </div>
+    </div>
+    <div style="height: 53px;"></div>
+</div>

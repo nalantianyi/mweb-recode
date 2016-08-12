@@ -1,0 +1,58 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1"><a href="#"><img src="img/icon-8.png" alt="" name=""/></a></div>
+        <div>添加收货地址</div>
+        <div class="head-icon-2" ng-if="state=='update'" ng-click="del()">
+            <p class="text-red">删除</p>
+        </div>
+    </div>
+    <div class="div-placeholder"></div>
+    <div class="div-10px"></div>
+    <!--add 添加地址-->
+    <div>
+        <div class="add-address clear">
+            <div class="fl btn-user">
+                <div class="position-r"><img src="img/icon-10.png"><input type="text"
+                                                                          ng-model="currentAddress.addressName"></div>
+                <div class="position-r"><img src="img/icon-11.png"><input type="text"
+                                                                          ng-model="currentAddress.addressMoblie">
+                </div>
+            </div>
+            <div class="fl select-user">
+                <img src="img/icon-9.png">
+                <p>选联系人</p>
+            </div>
+        </div>
+        <div class="div-10px"></div>
+        <div class="add-address">
+            <div class="location">
+                <img src="img/icon-12.png"/>
+                <div>
+                    <input id="demo1" type="text" readonly="" placeholder="点击选择"
+                           value="{{currentAddress.province.provinceName+'、'+currentAddress.city.cityName+'、'+currentAddress.district.districtName}}"/>
+                    <input id="value1" type="hidden"
+                           value="{{currentAddress.province.provinceId+'、'+currentAddress.city.cityId+'、'+currentAddress.district.districtId}}"/>
+                </div>
+                <img class="tri-right" src="img/icon-15.png"/>
+            </div>
+            <div class="location-detail">
+                <textarea ng-model="currentAddress.addressDetail" placeholder="详细地址"></textarea>
+            </div>
+        </div>
+        <div class="div-10px"></div>
+        <div class="add-address">
+            <div class="fixed-address">
+                <p>设置为默认地址</p>
+                <span>每次下单时会默认选定该地址</span>
+                <div class="shop-checkbox">
+                    <input type="checkbox" id="checkbox-10-1" ng-checked="currentAddress.isDefault=='1'"><label
+                        for="checkbox-10-1"></label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--bottom保存并使用-->
+    <div class="save fixed-bottom" ng-click="save()">保存并使用</div>
+</div>

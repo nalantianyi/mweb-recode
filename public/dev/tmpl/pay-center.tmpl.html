@@ -1,0 +1,28 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1"><a href="#"><img src="img/icon-8.png" alt="" name="" /></a> </div>
+        <div>订单详情</div>
+    </div>
+    <div class="div-placeholder"></div>
+
+    <!--订单收获详情-->
+    <div class="pay-wait-time clear">支付剩余时间&nbsp;<em>{{times.hours}}</em>:<em>{{times.minutes}}</em>:<em>{{times.seconds}}</em></div>
+    <div class="pay-money clear">
+        <p class="fl">支付金额</p>
+        <span  class="fr text-red" ng-bind="sum|currency:'¥'"></span>
+    </div>
+    <div class="box-12px"></div>
+
+    <!--支付方式-->
+    <div class="pay-ways">
+        <div class="way">
+            <img class="check" src="img/icon-4.png" alt="" name="" />
+            <img src="img/u2.png" alt="" name="" />
+            <strong class="">微信支付</strong>
+        </div>
+    </div>
+    <!--bottom保存并使用-->
+    <div class="save" ng-class="{disabled:isOrderEnd}">去付款</div>
+    <div style="height: 50px;"></div>
+</div>

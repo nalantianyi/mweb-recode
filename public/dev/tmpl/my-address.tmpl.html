@@ -1,0 +1,33 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1"><a ng-click="goBackToOrderConfirm()"><img src="img/icon-8.png" alt="" name=""/></a></div>
+        <div>我的地址</div>
+    </div>
+    <div class="div-placeholder"></div>
+    <div class="div-10px"></div>
+    <!--寄货地址-->
+    <div class="cart-none" ng-if="addressList.length==0">
+        <h4>还没有添加收货地址</h4>
+        <p>点下方添加按钮吧!</p>
+    </div>
+    <ul class="address-all" ng-if="addressList.length>0">
+        <li ng-repeat="address in addressList" ng-click="selectAddress(address)">
+            <div class="common-address" ng-if="$index==0">
+                <p>常用地址</p>
+            </div>
+            <div class="div-10px" ng-if="$index!=0"></div>
+            <div class="O-address O-address-1">
+                <img class="check-address" src="img/icon-4.png" ng-if="address['front-hasChecked']"/>
+                <img class="check-address" src="img/icon-5.png" ng-if="!address['front-hasChecked']"/>
+                <p class="address-1"><span ng-bind="address.addressName"></span><span
+                        ng-bind="address.addressMoblie"></span><em ng-if="address.isDefault=='1'">默认</em></p>
+                <p class="address-2">
+                    {{address.province.provinceName+address.city.cityName+address.district.districtName+address.addressDetail}}</p>
+                <img class="tri-right" src="img/icon-15.png" ng-click="gotoAddressEdit(address.addressId)"/>
+            </div>
+        </li>
+    </ul>
+    <!--bottom保存并使用-->
+    <div class="save fixed-bottom" ng-click="gotoAddressAdd()">+添加收货地址</div>
+</div>

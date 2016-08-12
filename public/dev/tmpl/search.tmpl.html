@@ -1,0 +1,92 @@
+<div class="wrap" ng-show="state===1||state===2">
+    <!--头部-->
+    <div class="header">
+        <div class="search-blank">
+            <img class="pic-search" src="img/icon-2.png"/>
+            <input type="text" ng-model="searchText" placeholder="爱马仕"/>
+            <a class="cancel text-green" ng-click="goHome()">取消</a>
+        </div>
+    </div>
+    <div class="div-placeholder"></div>
+    <!--产品列表-->
+    <div class="hot-search" ng-show="state===1">
+        <div class="div-placeholder"></div>
+        <div class="hot-search-btn">
+            <p>热门搜索</p>
+            <ul class="clear">
+                <li ng-repeat="hotSearch in hotSearchList">
+                    <button ng-click="gotoSearchDetail(hotSearch.keyword)" ng-bind="hotSearch.keyword"></button>
+                </li>
+            </ul>
+        </div>
+        <div class="hot-search-history">
+            <div class="clear title-history">
+                <p class="fl">历史记录</p>
+                <div class="fr" ng-click="clearHistorySearch()">
+                    <img src="img/icon-27.png"/>
+                    <span>清空</span>
+                </div>
+            </div>
+            <ul>
+                <li ng-click="gotoSearchDetail(hotSearch.keyword)" ng-repeat="historySearch in historySearchList"><a
+                        ng-bind="historySearch.keyword"></a></li>
+            </ul>
+        </div>
+
+    </div>
+    <!--产品列表-->
+    <div class="hot-search" ng-show="state===2">
+        <div class="div-placeholder"></div>
+        <ul class="hot-search-result">
+            <li ng-repeat="select in selectList" ng-click="gotoProductList(select)"><a><em ng-bind-html="select|trusted"></em></a></li>
+        </ul>
+    </div>
+    <div class="cart-none wifi-none" ng-show="state===3">
+        <img src="img/no-search.png"/>
+        <h4>抱歉，没有找到“<em class="text-green">{{searchText}}</em>”相关的产品</h4>
+        <p>你可以换个词试试!</p>
+    </div>
+</div>
+<div class="wrap" ng-show="state===4">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1" ng-click="goIndex()" style="z-index: 999"><a><img src="img/icon-8.png"/></a></div>
+        <div class="search-result">
+            <img class="pic-search" src="img/icon-2.png"/>
+            <input type="text" placeholder="爱马仕" ng-model="searchText"/>
+        </div>
+    </div>
+    <div class="div-placeholder"></div>
+    <div class="div-10px"></div>
+    <!--产品列表-->
+    <div class="shopping-cart">
+        <ul>
+            <li class="clear" ng-repeat="product in productList">
+                <div class="fl cart-left cart-left-1">
+                    <img class="pic-pro pic-pro-1" ng-src="{{product.goodsInfoImgId}}" alt="" name=""/>
+                </div>
+                <div class="fr cart-right cart-right-1">
+                    <h4 ng-bind="product.productName"></h4>
+                    <p class=""><span></span></p>
+                    <em ng-bind="product.goodsInfoPreferPrice|currency:'￥'"></em>
+                    <div class="change-num">
+                        <button class=" btn-green-null" ng-if="!product.clicked" ng-click="addCart(product)">加入购物车</button>
+                        <button class=" btn-disabled-null" ng-if="product.clicked">已加入</button>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <!--结算-->
+    <div class="cart-sum clear">
+        <div class="bottom-black">
+            <p>已添加<span class="text-green">{{currentCartNum}}</span>件商品</p>
+            <input class="btn-green" type="button" value="去结算" style="z-index: 999" ng-click="gotoCart()">
+        </div>
+    </div>
+    <div style="height: 53px;"></div>
+</div>

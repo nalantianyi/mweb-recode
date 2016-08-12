@@ -1,0 +1,82 @@
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        <div class="head-icon-1"><a ng-click="goBack()"><img src="img/icon-8.png"/></a></div>
+        <div>确认订单</div>
+    </div>
+    <div class="div-placeholder"></div>
+    <div class="div-10px"></div>
+    <!--添加地址-->
+    <div class="print-address" ng-if="!orderAddress"><a href="#/my-address-add">+ 添加收货地址</a></div>
+    <!--寄货地址-->
+    <div class="O-address" ng-if="orderAddress" ng-click="selectAddress()">
+        <p class="address-1"><span ng-bind="orderAddress.addrName"></span><span
+                ng-bind="orderAddress.addressMoblie"></span><em>默认</em></p>
+        <p class="address-2" ng-bind="orderAddress.addressName||'无默认信息'"></p>
+        <img class="tri-right" src="img/icon-15.png"/>
+    </div>
+    <!--产品列表-->
+    <div class="shopping-cart">
+        <ul>
+            <li class="clear" ng-repeat="shop in shopList">
+                <div class="fl cart-left cart-left-1">
+                    <img class="pic-pro pic-pro-1" ng-src="{{shop.goodsDetailBean.productVo.goods.goodsImg}}"/>
+                </div>
+                <div class="fr cart-right cart-right-1">
+                    <h4 ng-bind="shop.goodsDetailBean.productVo.productName"></h4>
+                    <p><span>颜色</span>规格</p>
+                    <em ng-bind="shop.goodsDetailBean.productVo.goodsInfoPreferPrice|currency:'¥'"></em>
+                    <div class="change-num">
+                        <span>x{{shop.goodsNum}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--商品价格-->
+    <div class="price">
+        <ul>
+            <li class="clear"><p class="fl">商品总价</p>
+                <p class="fr" ng-bind="sumPrice|currency:'¥'"></p></li>
+            <li class="clear"><p class="fl">运费</p>
+                <p class="fr" ng-bind="expressPrice|currency:'¥'"></p></li>
+            <li class="clear"><p class="fl">金币</p>
+                <p class="fr">-{{goodsPrice|currency:'¥'}}</p></li>
+            <li class="clear"><p class="fl">抵用券</p>
+                <p class="fr">-{{couponPrice|currency:'¥'}}</p></li>
+            <li class="clear"><p class="fl">总计</p>
+                <p class="fr text-red" ng-bind="prePrice|currency:'¥'"></p></li>
+        </ul>
+    </div>
+    <div class="div-10px"></div>
+    <div class="coffee-gold clear">
+        <img class="check-yes" src="img/icon-4.png"/>
+        <span class="fl">加菲派金币<em>(100金币=1元)</em></span>
+        <strong class="fr">可用金币数：0</strong>
+    </div>
+    <div class="div-10px"></div>
+    <!--抵用券-->
+    <div class="voucher clear" ng-click="gotoCoupon()">
+        <span class="fl">我的抵用券</span>
+        <strong class="fr">可用金币数：0<img src="img/icon-15.png"/></strong>
+    </div>
+    <div class="div-10px"></div>
+    <!--配送方式-->
+    <div class="delivery clear">
+        <h4 class="fl">配送方式</h4>
+        <div class="fr">
+            <p class="delivery-way">商家配送</p>
+            <p class="delivery-detail"><img src="img/icon-17.png" alt="" name=""/>由商家选择合作快递为您配送</p>
+        </div>
+    </div>
+    <!--结算-->
+    <div class="cart-sum clear">
+        <div class="fl cart-sum-left">
+            <strong class="marginleft-10px">实付:<em>{{prePrice|currency:'¥'}}</em></strong>
+        </div>
+        <div class="fr cart-sum-right-green" ng-click="gotoPayCenter()">
+            去支付
+        </div>
+    </div>
+    <div style="height: 53px;"></div>
+</div>
