@@ -1,0 +1,25 @@
+{
+  "name": "mweb-recode",
+  "version": "1.0.0",
+  "description": "移动端web脚手架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nalantianyi/mweb-recode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nalantianyi/mweb-recode/issues"
+  },
+  "homepage": "https://github.com/nalantianyi/mweb-recode#readme",
+  "dependencies": {
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "wechat": "^2.0.3",
+    "wechat-api": "^1.28.0"
+  }
+}
